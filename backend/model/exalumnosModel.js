@@ -1,23 +1,6 @@
 const mongoose = require('mongoose');
+const Empleo = require('../model/empleoModel')
 
-
-const empleoSchema = mongoose.Schema({
-    Puesto: {
-        type: String,
-        required: [true, 'Por favor ingresa el puesto que ocupa']
-    },
-    Empresa: {
-        type: String,
-        required: [true, 'Por favor ingresa la empresa en la que trabaja']
-    },
-    Estado: {
-        type: String,
-        required: [true, 'Por favor ingresa el Estado en el que labora']
-    }
-},
-    {
-        _id: false
-    })
 
 const exalumnosSchema = mongoose.Schema({
     Nombre: {
@@ -41,8 +24,9 @@ const exalumnosSchema = mongoose.Schema({
         required: [true, 'Por favor ingresa la facultad en la que estudió el exalumno']
     },
     Empleo: {
-        type: empleoSchema,
-        required: true
+        type: Empleo.schema,
+        required: true,
+        ref: 'Empleo'
     },
 },
     {
